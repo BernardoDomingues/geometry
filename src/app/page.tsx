@@ -1,95 +1,94 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+'use client';
+
+import { useState } from 'react';
+import { Canvas } from '@react-three/fiber';
+import { OrbitControls } from '@react-three/drei';
+import * as THREE from 'three';
+
+function Cube({ showEdges, showFaces, showVertices }: { 
+  showEdges: boolean; 
+  showFaces: boolean; 
+  showVertices: boolean; 
+}) {
+  return (
+    <mesh>
+      <boxGeometry args={[2, 2, 2]} />
+      <meshStandardMaterial 
+        color="#1e88e5" 
+        transparent 
+        opacity={showFaces ? 0.3 : 1}
+      />
+      {showEdges && (
+        <lineSegments>
+          <edgesGeometry args={[new THREE.BoxGeometry(2, 2, 2)]} />
+          <lineBasicMaterial color="red" />
+        </lineSegments>
+      )}
+      {showVertices && (
+        <points>
+          <bufferGeometry>
+            <bufferAttribute
+              args={[new Float32Array([
+                -1, -1, -1,  1, -1, -1,  1, 1, -1, -1, 1, -1,
+                -1, -1, 1,   1, -1, 1,   1, 1, 1,  -1, 1, 1
+              ]), 3]}
+              attach="attributes-position"
+              count={8}
+              itemSize={3}
+            />
+          </bufferGeometry>
+          <pointsMaterial color="green" size={0.2} />
+        </points>
+      )}
+    </mesh>
+  );
+}
 
 export default function Home() {
-  return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol>
-          <li>
-            Get started by editing <code>src/app/page.tsx</code>.
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+  const [showEdges, setShowEdges] = useState(false);
+  const [showFaces, setShowFaces] = useState(false);
+  const [showVertices, setShowVertices] = useState(false);
 
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.secondary}
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className={styles.footer}>
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
+  return (
+    <div className="h-screen w-full">
+      <div className="h-[90vh] w-full">
+        <Canvas camera={{ position: [3, 3, 3] }} style={{ height: '500px' }}>
+          <ambientLight intensity={0.5} />
+          <pointLight position={[10, 10, 10]} />
+          <Cube 
+            showEdges={showEdges}
+            showFaces={showFaces}
+            showVertices={showVertices}
           />
-          Learn
-        </a>
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
+          <OrbitControls />
+        </Canvas>
+      </div>
+      <div className="flex justify-center gap-4 p-4">
+        <label className="flex items-center gap-2">
+          <input
+            type="checkbox"
+            checked={showEdges}
+            onChange={(e) => setShowEdges(e.target.checked)}
           />
-          Examples
-        </a>
-        <a
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
+          Arestas
+        </label>
+        <label className="flex items-center gap-2">
+          <input
+            type="checkbox"
+            checked={showFaces}
+            onChange={(e) => setShowFaces(e.target.checked)}
           />
-          Go to nextjs.org →
-        </a>
-      </footer>
+          Lados
+        </label>
+        <label className="flex items-center gap-2">
+          <input
+            type="checkbox"
+            checked={showVertices}
+            onChange={(e) => setShowVertices(e.target.checked)}
+          />
+          Vértices
+        </label>
+      </div>
     </div>
   );
 }
