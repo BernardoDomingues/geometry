@@ -23,6 +23,11 @@ export interface IShape {
     showFaces: boolean;
     showVertices: boolean;
   }>;
+  config: {
+    hasEdges: boolean;
+    hasFaces: boolean;
+    hasVertices: boolean;
+  };
 }
 
 export const shapes: IShape[] = [
@@ -32,6 +37,11 @@ export const shapes: IShape[] = [
     description: "Explore as faces, arestas e vértices do cone",
     icon: LuCone,
     component: Cone,
+    config: {
+      hasEdges: false,
+      hasFaces: true,
+      hasVertices: true,
+    },
   },
   {
     id: "cubo",
@@ -39,6 +49,11 @@ export const shapes: IShape[] = [
     description: "Explore as faces, arestas e vértices do cubo",
     icon: FaCube,
     component: Cube,
+    config: {
+      hasEdges: true,
+      hasFaces: true,
+      hasVertices: true,
+    },
   },
   {
     id: "cilindro",
@@ -46,6 +61,11 @@ export const shapes: IShape[] = [
     description: "Explore as faces, arestas e vértices do cilindro",
     icon: LuCylinder,
     component: Cylinder,
+    config: {
+      hasEdges: true,
+      hasFaces: true,
+      hasVertices: true,
+    },
   },
   {
     id: "dodecaedro",
@@ -53,6 +73,11 @@ export const shapes: IShape[] = [
     description: "Explore as faces, arestas e vértices do dodecaedro",
     icon: null,
     component: Dodecahedron,
+    config: {
+      hasEdges: true,
+      hasFaces: true,
+      hasVertices: true,
+    },
   },
   {
     id: "icosaedro",
@@ -60,6 +85,11 @@ export const shapes: IShape[] = [
     description: "Explore as faces, arestas e vértices do icosaedro",
     icon: null,
     component: Icosahedron,
+    config: {
+      hasEdges: true,
+      hasFaces: true,
+      hasVertices: true,
+    },
   },
   {
     id: "octaedro",
@@ -67,6 +97,11 @@ export const shapes: IShape[] = [
     description: "Explore as faces, arestas e vértices do octaedro",
     icon: TbOctahedron,
     component: Octahedron,
+    config: {
+      hasEdges: true,
+      hasFaces: true,
+      hasVertices: true,
+    },
   },
   {
     id: "piramide",
@@ -74,6 +109,11 @@ export const shapes: IShape[] = [
     description: "Explore as faces, arestas e vértices da pirâmide",
     icon: LuPyramid,
     component: Pyramid,
+    config: {
+      hasEdges: true,
+      hasFaces: true,
+      hasVertices: true,
+    },
   },
   {
     id: "prisma-retangular",
@@ -81,6 +121,11 @@ export const shapes: IShape[] = [
     description: "Explore as faces, arestas e vértices do prisma retangular",
     icon: PiRectangleDashedFill,
     component: RectangularPrism,
+    config: {
+      hasEdges: true,
+      hasFaces: true,
+      hasVertices: true,
+    },
   },
   {
     id: "esfera",
@@ -88,6 +133,11 @@ export const shapes: IShape[] = [
     description: "Explore as faces, arestas e vértices da esfera",
     icon: TbSphere,
     component: Sphere,
+    config: {
+      hasEdges: true,
+      hasFaces: true,
+      hasVertices: true,
+    },
   },
   {
     id: "tetraedro",
@@ -95,5 +145,10 @@ export const shapes: IShape[] = [
     description: "Explore as faces, arestas e vértices do tetraedro",
     icon: TbBrandPrisma,
     component: Tetrahedron,
+    config: {
+      hasEdges: true,
+      hasFaces: true,
+      hasVertices: true,
+    },
   },
 ];

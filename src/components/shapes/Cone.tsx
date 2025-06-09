@@ -1,7 +1,5 @@
 "use client";
 
-import * as THREE from "three";
-
 export default function Cone({
   showEdges,
   showFaces,
@@ -19,17 +17,6 @@ export default function Cone({
         transparent
         opacity={showFaces ? 1 : 0.3}
       />
-      {showEdges ? (
-        <lineSegments>
-          <edgesGeometry args={[new THREE.ConeGeometry(1, 2, 32)]} />
-          <lineBasicMaterial color="red" />
-        </lineSegments>
-      ) : (
-        <lineSegments>
-          <edgesGeometry args={[new THREE.ConeGeometry(1, 2, 32)]} />
-          <lineBasicMaterial color="white" />
-        </lineSegments>
-      )}
       {showVertices && (
         <points>
           <bufferGeometry>
@@ -37,15 +24,11 @@ export default function Cone({
               args={[
                 new Float32Array([
                   0, 1, 0,    // top vertex
-                  1, -1, 0,   // base vertices
-                  -1, -1, 0,
-                  0, -1, 1,
-                  0, -1, -1,
                 ]),
                 3,
               ]}
               attach="attributes-position"
-              count={5}
+              count={1}
               itemSize={3}
             />
           </bufferGeometry>

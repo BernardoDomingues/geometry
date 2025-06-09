@@ -96,6 +96,7 @@ export default function FormaPage({ params }: { params: Promise<{ id: string }> 
                 <Switch.Root
                   checked={showFaces}
                   onCheckedChange={(e) => setShowFaces(e.checked)}
+                  disabled={!shape.config.hasFaces}
                 >
                   <Switch.HiddenInput />
                   <Switch.Control>
@@ -109,6 +110,7 @@ export default function FormaPage({ params }: { params: Promise<{ id: string }> 
                 <Switch.Root
                   checked={showEdges}
                   onCheckedChange={(e) => setShowEdges(e.checked)}
+                  disabled={!shape.config.hasEdges}
                 >
                   <Switch.HiddenInput />
                   <Switch.Control>
@@ -122,6 +124,7 @@ export default function FormaPage({ params }: { params: Promise<{ id: string }> 
                 <Switch.Root
                   checked={showVertices}
                   onCheckedChange={(e) => setShowVertices(e.checked)}
+                  disabled={!shape.config.hasVertices}
                 >
                   <Switch.HiddenInput />
                   <Switch.Control>
