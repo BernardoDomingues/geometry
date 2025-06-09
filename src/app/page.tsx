@@ -1,64 +1,113 @@
 "use client";
 
-import { useState } from "react";
-import { Canvas } from "@react-three/fiber";
-import { OrbitControls } from "@react-three/drei";
-import Cube from "@/components/Cube";
-import RectangularPrism from "@/components/RectangularPrism";
-import Pyramid from "@/components/Pyramid";
-import Cylinder from "@/components/Cylinder";
-import Cone from "@/components/Cone";
-import Sphere from "@/components/Sphere";
-import Tetrahedron from "@/components/Tetrahedron";
-import Dodecahedron from "@/components/Dodecahedron";
-import Octahedron from "@/components/Octahedron";
-import Icosahedron from "@/components/Icosahedron";
+import { useColorModeValue } from "@/components/ui/color-mode";
+import {
+  Box,
+  Container,
+  Heading,
+  Text,
+  VStack,
+  Icon,
+  Button,
+  SimpleGrid,
+} from "@chakra-ui/react";
+import { FaCube, FaShapes, FaGraduationCap } from "react-icons/fa";
+import { useRouter } from "next/navigation";
 
 export default function Home() {
-  const [showEdges, setShowEdges] = useState(false);
-  const [showFaces, setShowFaces] = useState(false);
-  const [showVertices, setShowVertices] = useState(false);
+  const router = useRouter();
+  const bgColor = useColorModeValue("gray.50", "gray.900");
+  const primaryColor = "blue.500";
+  const headingColor = useColorModeValue("gray.800", "white");
+  const heroBg = useColorModeValue("white", "gray.900");
+  const heroGradient = useColorModeValue(
+    "linear(to-r, blue.400, purple.400)",
+    "linear(to-r, blue.500, purple.500)"
+  );
+
+  const features = [
+    {
+      icon: FaCube,
+      title: "Visualização 3D",
+      description: "Explore formas geométricas em um ambiente tridimensional interativo",
+    },
+    {
+      icon: FaShapes,
+      title: "Formas Interativas",
+      description: "Gire, mova e interaja com diferentes formas geométricas",
+    },
+    {
+      icon: FaGraduationCap,
+      title: "Aprendizado Prático",
+      description: "Aprenda geometria de forma divertida e interativa",
+    },
+  ];
 
   return (
-    <div className="h-screen w-full">
-      <div className="h-[90vh] w-full">
-        <Canvas camera={{ position: [3, 3, 3] }} style={{ height: "500px" }}>
-          <ambientLight intensity={0.5} />
-          <pointLight position={[10, 10, 10]} />
-          <Icosahedron
-            showEdges={showEdges}
-            showFaces={showFaces}
-            showVertices={showVertices}
-          />
-          <OrbitControls />
-        </Canvas>
-      </div>
-      <div className="flex justify-center gap-4 p-4">
-        <label className="flex items-center gap-2">
-          <input
-            type="checkbox"
-            checked={showEdges}
-            onChange={(e) => setShowEdges(e.target.checked)}
-          />
-          Arestas
-        </label>
-        <label className="flex items-center gap-2">
-          <input
-            type="checkbox"
-            checked={showFaces}
-            onChange={(e) => setShowFaces(e.target.checked)}
-          />
-          Lados
-        </label>
-        <label className="flex items-center gap-2">
-          <input
-            type="checkbox"
-            checked={showVertices}
-            onChange={(e) => setShowVertices(e.target.checked)}
-          />
-          Vértices
-        </label>
-      </div>
-    </div>
+    <Box bg={bgColor} minH="100vh">
+      {/* Hero Section */}
+      <Box
+        bg={heroBg}
+        bgGradient={heroGradient}
+        color={headingColor}
+        py={20}
+      >
+        <Container maxW="container.xl">
+          <VStack gap={8} align="center" textAlign="center">
+            <Heading
+              as="h1"
+              size="2xl"
+              fontWeight="bold"
+              color={headingColor}
+              textShadow={useColorModeValue("none", "2px 2px 4px rgba(0,0,0,0.2)")}
+            >
+              Geometria Interativa
+            </Heading>
+            <Text fontSize="xl" maxW="container.md">
+              Explore o mundo da geometria de forma divertida e interativa.
+              Aprenda sobre formas, ângulos e medidas através de uma experiência
+              visual única.
+            </Text>
+            <Button
+              size="lg"
+              colorScheme={useColorModeValue("blue", "whiteAlpha")}
+              _hover={{ bg: useColorModeValue("blue.600", "blue.600") }}
+              onClick={() => router.push("/formas")}
+            >
+              Começar a Explorar
+            </Button>
+          </VStack>
+        </Container>
+      </Box>
+
+      {/* Features Section */}
+      <Container maxW="container.xl" py={20}>
+        <SimpleGrid columns={{ base: 1, md: 3 }} gap={10}>
+          {features.map((feature, index) => (
+            <Box
+              key={index}
+              p={8}
+              bg={useColorModeValue("white", "gray.800")}
+              borderRadius="lg"
+              boxShadow="xl"
+              _hover={{ transform: "translateY(-5px)", transition: "all 0.3s" }}
+            >
+              <VStack gap={4} align="center">
+                <Icon
+                  as={feature.icon}
+                  w={12}
+                  h={12}
+                  color={primaryColor}
+                />
+                <Heading size="md">{feature.title}</Heading>
+                <Text textAlign="center" color={useColorModeValue("gray.600", "gray.300")}>
+                  {feature.description}
+                </Text>
+              </VStack>
+            </Box>
+          ))}
+        </SimpleGrid>
+      </Container>
+    </Box>
   );
 }
