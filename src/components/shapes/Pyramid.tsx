@@ -36,11 +36,11 @@ export default function Pyramid({
             <bufferAttribute
               args={[
                 new Float32Array([
-                  0, 1, 0,    // top vertex
-                  -1.5, -1, -1.5,  // base vertices
-                  1.5, -1, -1.5,
-                  1.5, -1, 1.5,
-                  -1.5, -1, 1.5,
+                  0, 1, 0,
+                  1.5, -1, 0,
+                  0, -1, 1.5,
+                  -1.5, -1, 0,
+                  0, -1, -1.5,
                 ]),
                 3,
               ]}
