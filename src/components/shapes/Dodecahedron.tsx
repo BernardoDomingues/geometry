@@ -11,6 +11,9 @@ export default function Dodecahedron({
   showFaces: boolean;
   showVertices: boolean;
 }) {
+  const geometry = new THREE.DodecahedronGeometry(1.5);
+  const positions = geometry.attributes.position.array;
+
   return (
     <mesh>
       <dodecahedronGeometry args={[1.5]} />
@@ -34,19 +37,7 @@ export default function Dodecahedron({
         <points>
           <bufferGeometry>
             <bufferAttribute
-              args={[
-                new Float32Array([
-                  // Dodecahedron vertices
-                  0.607, 0, 0.795, 0.188, 0.577, 0.795, -0.491, 0.357, 0.795,
-                  -0.491, -0.357, 0.795, 0.188, -0.577, 0.795, 0.982, 0, 0.188,
-                  0.304, 0.934, 0.188, -0.795, 0.577, 0.188, -0.795, -0.577, 0.188,
-                  0.304, -0.934, 0.188, 0.795, 0.577, -0.188, -0.304, 0.934, -0.188,
-                  -0.982, 0, -0.188, -0.304, -0.934, -0.188, 0.795, -0.577, -0.188,
-                  0.491, 0.357, -0.795, -0.188, 0.577, -0.795, -0.607, 0, -0.795,
-                  -0.188, -0.577, -0.795, 0.491, -0.357, -0.795
-                ]),
-                3,
-              ]}
+              args={[new Float32Array(positions), 3]}
               attach="attributes-position"
               count={20}
               itemSize={3}
