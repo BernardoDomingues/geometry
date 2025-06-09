@@ -1,48 +1,18 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import { Canvas } from '@react-three/fiber';
-import { OrbitControls } from '@react-three/drei';
-import * as THREE from 'three';
-
-function Cube({ showEdges, showFaces, showVertices }: { 
-  showEdges: boolean; 
-  showFaces: boolean; 
-  showVertices: boolean; 
-}) {
-  return (
-    <mesh>
-      <boxGeometry args={[2, 2, 2]} />
-      <meshStandardMaterial 
-        color="#1e88e5" 
-        transparent 
-        opacity={showFaces ? 0.3 : 1}
-      />
-      {showEdges && (
-        <lineSegments>
-          <edgesGeometry args={[new THREE.BoxGeometry(2, 2, 2)]} />
-          <lineBasicMaterial color="red" />
-        </lineSegments>
-      )}
-      {showVertices && (
-        <points>
-          <bufferGeometry>
-            <bufferAttribute
-              args={[new Float32Array([
-                -1, -1, -1,  1, -1, -1,  1, 1, -1, -1, 1, -1,
-                -1, -1, 1,   1, -1, 1,   1, 1, 1,  -1, 1, 1
-              ]), 3]}
-              attach="attributes-position"
-              count={8}
-              itemSize={3}
-            />
-          </bufferGeometry>
-          <pointsMaterial color="green" size={0.2} />
-        </points>
-      )}
-    </mesh>
-  );
-}
+import { useState } from "react";
+import { Canvas } from "@react-three/fiber";
+import { OrbitControls } from "@react-three/drei";
+import Cube from "@/components/Cube";
+import RectangularPrism from "@/components/RectangularPrism";
+import Pyramid from "@/components/Pyramid";
+import Cylinder from "@/components/Cylinder";
+import Cone from "@/components/Cone";
+import Sphere from "@/components/Sphere";
+import Tetrahedron from "@/components/Tetrahedron";
+import Dodecahedron from "@/components/Dodecahedron";
+import Octahedron from "@/components/Octahedron";
+import Icosahedron from "@/components/Icosahedron";
 
 export default function Home() {
   const [showEdges, setShowEdges] = useState(false);
@@ -52,10 +22,10 @@ export default function Home() {
   return (
     <div className="h-screen w-full">
       <div className="h-[90vh] w-full">
-        <Canvas camera={{ position: [3, 3, 3] }} style={{ height: '500px' }}>
+        <Canvas camera={{ position: [3, 3, 3] }} style={{ height: "500px" }}>
           <ambientLight intensity={0.5} />
           <pointLight position={[10, 10, 10]} />
-          <Cube 
+          <Icosahedron
             showEdges={showEdges}
             showFaces={showFaces}
             showVertices={showVertices}
