@@ -62,9 +62,9 @@ export const shapes: IShape[] = [
     icon: LuCylinder,
     component: Cylinder,
     config: {
-      hasEdges: true,
+      hasEdges: false,
       hasFaces: true,
-      hasVertices: true,
+      hasVertices: false,
     },
   },
   {
