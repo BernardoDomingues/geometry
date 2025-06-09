@@ -134,9 +134,9 @@ export const shapes: IShape[] = [
     icon: TbSphere,
     component: Sphere,
     config: {
-      hasEdges: true,
+      hasEdges: false,
       hasFaces: true,
-      hasVertices: true,
+      hasVertices: false,
     },
   },
   {
