@@ -1,7 +1,5 @@
 "use client";
 
-import * as THREE from "three";
-
 export default function Sphere({
   showEdges,
   showFaces,
@@ -19,6 +17,8 @@ export default function Sphere({
         transparent
         opacity={showFaces ? 1 : 0.3}
       />
+      <directionalLight position={[5, 5, 5]} intensity={1} />
+      <ambientLight intensity={0.3} />
     </mesh>
   );
 }
