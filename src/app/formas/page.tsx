@@ -38,7 +38,10 @@ export default function Formas() {
             as="h1"
             size="xl"
             textAlign="center"
-            textShadow={useColorModeValue("none", "2px 2px 4px rgba(0,0,0,0.2)")}
+            textShadow={useColorModeValue(
+              "none",
+              "2px 2px 4px rgba(0,0,0,0.2)"
+            )}
           >
             Formas Geométricas
           </Heading>
@@ -71,7 +74,10 @@ export default function Formas() {
                   color={primaryColor}
                 />
                 <Heading size="md">{shape.name}</Heading>
-                <Text textAlign="center" color={useColorModeValue("gray.600", "gray.300")}>
+                <Text
+                  textAlign="center"
+                  color={useColorModeValue("gray.600", "gray.300")}
+                >
                   {shape.description}
                 </Text>
               </Flex>
@@ -82,4 +88,4 @@ export default function Formas() {
       <Footer />
     </Box>
   );
-} 
+}

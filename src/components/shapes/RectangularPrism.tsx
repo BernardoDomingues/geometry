@@ -40,14 +40,30 @@ export default function RectangularPrism({
             <bufferAttribute
               args={[
                 new Float32Array([
-                  -width/2, -height/2, -depth/2,
-                  width/2, -height/2, -depth/2,
-                  width/2, height/2, -depth/2,
-                  -width/2, height/2, -depth/2,
-                  -width/2, -height/2, depth/2,
-                  width/2, -height/2, depth/2,
-                  width/2, height/2, depth/2,
-                  -width/2, height/2, depth/2,
+                  -width / 2,
+                  -height / 2,
+                  -depth / 2,
+                  width / 2,
+                  -height / 2,
+                  -depth / 2,
+                  width / 2,
+                  height / 2,
+                  -depth / 2,
+                  -width / 2,
+                  height / 2,
+                  -depth / 2,
+                  -width / 2,
+                  -height / 2,
+                  depth / 2,
+                  width / 2,
+                  -height / 2,
+                  depth / 2,
+                  width / 2,
+                  height / 2,
+                  depth / 2,
+                  -width / 2,
+                  height / 2,
+                  depth / 2,
                 ]),
                 3,
               ]}
@@ -61,4 +77,4 @@ export default function RectangularPrism({
       )}
     </mesh>
   );
-} 
+}

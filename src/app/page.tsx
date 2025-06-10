@@ -29,7 +29,8 @@ export default function Home() {
     {
       icon: FaCube,
       title: "Visualização 3D",
-      description: "Explore formas geométricas em um ambiente tridimensional interativo",
+      description:
+        "Explore formas geométricas em um ambiente tridimensional interativo",
     },
     {
       icon: FaShapes,
@@ -46,12 +47,7 @@ export default function Home() {
   return (
     <Box bg={bgColor} minH="100vh">
       {/* Hero Section */}
-      <Box
-        bg={heroBg}
-        bgGradient={heroGradient}
-        color={headingColor}
-        py={20}
-      >
+      <Box bg={heroBg} bgGradient={heroGradient} color={headingColor} py={20}>
         <Container maxW="container.xl">
           <VStack gap={8} align="center" textAlign="center">
             <Heading
@@ -59,7 +55,10 @@ export default function Home() {
               size="2xl"
               fontWeight="bold"
               color={headingColor}
-              textShadow={useColorModeValue("none", "2px 2px 4px rgba(0,0,0,0.2)")}
+              textShadow={useColorModeValue(
+                "none",
+                "2px 2px 4px rgba(0,0,0,0.2)"
+              )}
             >
               Geometria Interativa
             </Heading>
@@ -93,14 +92,12 @@ export default function Home() {
               _hover={{ transform: "translateY(-5px)", transition: "all 0.3s" }}
             >
               <VStack gap={4} align="center">
-                <Icon
-                  as={feature.icon}
-                  w={12}
-                  h={12}
-                  color={primaryColor}
-                />
+                <Icon as={feature.icon} w={12} h={12} color={primaryColor} />
                 <Heading size="md">{feature.title}</Heading>
-                <Text textAlign="center" color={useColorModeValue("gray.600", "gray.300")}>
+                <Text
+                  textAlign="center"
+                  color={useColorModeValue("gray.600", "gray.300")}
+                >
                   {feature.description}
                 </Text>
               </VStack>

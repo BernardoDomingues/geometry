@@ -23,12 +23,7 @@ export default function Cone({
         <points>
           <bufferGeometry>
             <bufferAttribute
-              args={[
-                new Float32Array([
-                  0, 1, 0,    // top vertex
-                ]),
-                3,
-              ]}
+              args={[new Float32Array([0, 1, 0]), 3]}
               attach="attributes-position"
               count={1}
               itemSize={3}
@@ -46,4 +41,4 @@ export default function Cone({
       </group>
     </mesh>
   );
-} 
+}

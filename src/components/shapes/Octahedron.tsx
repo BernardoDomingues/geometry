@@ -36,7 +36,8 @@ export default function Octahedron({
             <bufferAttribute
               args={[
                 new Float32Array([
-                  1.5, 0, 0, -1.5, 0, 0, 0, 1.5, 0, 0, -1.5, 0, 0, 0, 1.5, 0, 0, -1.5
+                  1.5, 0, 0, -1.5, 0, 0, 0, 1.5, 0, 0, -1.5, 0, 0, 0, 1.5, 0, 0,
+                  -1.5,
                 ]),
                 3,
               ]}
@@ -50,4 +51,4 @@ export default function Octahedron({
       )}
     </mesh>
   );
-} 
+}

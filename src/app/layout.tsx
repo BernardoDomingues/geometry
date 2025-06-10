@@ -4,7 +4,7 @@ import ColorModeToggle from "@/components/ColorModeToggle";
 import dynamic from "next/dynamic";
 import { Geist, Geist_Mono } from "next/font/google";
 const ThemeProvider = dynamic(
-  () => import("@/components/ui/provider").then(mod => mod.Provider),
+  () => import("@/components/ui/provider").then((mod) => mod.Provider),
   { ssr: false }
 );
 

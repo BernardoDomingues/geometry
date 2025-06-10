@@ -1,4 +1,4 @@
-import { useColorModeValue } from "./ui/color-mode"
+import { useColorModeValue } from "./ui/color-mode";
 
 import { Box, IconButton } from "@chakra-ui/react";
 import { CiDark, CiLight } from "react-icons/ci";

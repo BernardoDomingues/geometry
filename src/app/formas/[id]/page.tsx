@@ -16,7 +16,11 @@ import { OrbitControls } from "@react-three/drei";
 import Footer from "@/components/Footer";
 import { shapes } from "@/helpers/shapes";
 
-export default function FormaPage({ params }: { params: Promise<{ id: string }> }) {
+export default function FormaPage({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}) {
   const resolvedParams = use(params);
   const bgColor = useColorModeValue("gray.50", "gray.900");
   const cardBg = useColorModeValue("white", "gray.800");
@@ -76,7 +80,10 @@ export default function FormaPage({ params }: { params: Promise<{ id: string }> 
             borderRadius="lg"
             overflow="hidden"
           >
-            <Canvas camera={{ position: [3, 3, 3] }} style={{ height: "500px" }}>
+            <Canvas
+              camera={{ position: [3, 3, 3] }}
+              style={{ height: "500px" }}
+            >
               <ambientLight intensity={0.5} />
               <pointLight position={[10, 10, 10]} />
               <shape.component
@@ -92,7 +99,9 @@ export default function FormaPage({ params }: { params: Promise<{ id: string }> 
           <Box w={{ base: "100%", lg: "300px" }}>
             <VStack gap={6} align="stretch">
               <Flex alignItems="center">
-                <Text mb="0" mr={2}>Mostrar Faces</Text>
+                <Text mb="0" mr={2}>
+                  Mostrar Faces
+                </Text>
                 <Switch.Root
                   checked={showFaces}
                   onCheckedChange={(e) => setShowFaces(e.checked)}
@@ -106,7 +115,9 @@ export default function FormaPage({ params }: { params: Promise<{ id: string }> 
                 </Switch.Root>
               </Flex>
               <Flex alignItems="center">
-                <Text mb="0" mr={2}>Mostrar Arestas</Text>
+                <Text mb="0" mr={2}>
+                  Mostrar Arestas
+                </Text>
                 <Switch.Root
                   checked={showEdges}
                   onCheckedChange={(e) => setShowEdges(e.checked)}
@@ -120,7 +131,9 @@ export default function FormaPage({ params }: { params: Promise<{ id: string }> 
                 </Switch.Root>
               </Flex>
               <Flex alignItems="center">
-                <Text mb="0" mr={2}>Mostrar Vértices</Text>
+                <Text mb="0" mr={2}>
+                  Mostrar Vértices
+                </Text>
                 <Switch.Root
                   checked={showVertices}
                   onCheckedChange={(e) => setShowVertices(e.checked)}
