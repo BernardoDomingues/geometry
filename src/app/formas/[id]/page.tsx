@@ -82,7 +82,7 @@ export default function FormaPage({
           >
             <Canvas
               camera={{ position: [3, 3, 3] }}
-              style={{ height: "500px" }}
+              style={{ height: "500px", cursor: "grab" }}
             >
               <ambientLight intensity={0.5} />
               <pointLight position={[10, 10, 10]} />

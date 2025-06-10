@@ -1,6 +1,7 @@
 "use client";
 
 import * as THREE from "three";
+import { useMemo } from "react";
 
 export default function Icosahedron({
   showEdges,
@@ -11,8 +12,26 @@ export default function Icosahedron({
   showFaces: boolean;
   showVertices: boolean;
 }) {
-  const geometry = new THREE.IcosahedronGeometry(1.5);
-  const positions = geometry.attributes.position.array;
+  const geometry = useMemo(() => new THREE.IcosahedronGeometry(1.5), []);
+
+  const uniqueVertices = useMemo(() => {
+    const pos = geometry.getAttribute("position");
+    const verticesSet = new Set<string>();
+    const unique: number[] = [];
+
+    for (let i = 0; i < pos.count; i++) {
+      const x = pos.getX(i);
+      const y = pos.getY(i);
+      const z = pos.getZ(i);
+      const key = `${x.toFixed(5)},${y.toFixed(5)},${z.toFixed(5)}`;
+      if (!verticesSet.has(key)) {
+        verticesSet.add(key);
+        unique.push(x, y, z);
+      }
+    }
+
+    return new Float32Array(unique);
+  }, [geometry]);
 
   return (
     <mesh>
@@ -22,25 +41,18 @@ export default function Icosahedron({
         transparent
         opacity={showFaces ? 1 : 0.3}
       />
-      {showEdges ? (
-        <lineSegments>
-          <edgesGeometry args={[geometry]} />
-          <lineBasicMaterial color="red" />
-        </lineSegments>
-      ) : (
-        <lineSegments>
-          <edgesGeometry args={[geometry]} />
-          <lineBasicMaterial color="white" />
-        </lineSegments>
-      )}
+
+      <lineSegments>
+        <edgesGeometry args={[geometry]} />
+        <lineBasicMaterial color={showEdges ? "red" : "white"} />
+      </lineSegments>
+
       {showVertices && (
         <points>
           <bufferGeometry>
             <bufferAttribute
-              args={[positions, 3]}
               attach="attributes-position"
-              count={12}
-              itemSize={3}
+              args={[uniqueVertices, 3]}
             />
           </bufferGeometry>
           <pointsMaterial color="green" size={0.15} />
