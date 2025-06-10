@@ -38,7 +38,7 @@ export const shapes: IShape[] = [
   {
     id: "cone",
     name: "Cone",
-    description: "Explore as faces, arestas e vértices do cone",
+    description: "Explore as faces e vértices do cone",
     icon: LuCone,
     component: Cone,
     config: {
@@ -62,7 +62,7 @@ export const shapes: IShape[] = [
   {
     id: "cilindro",
     name: "Cilindro",
-    description: "Explore as faces, arestas e vértices do cilindro",
+    description: "Explore as faces do cilindro",
     icon: LuCylinder,
     component: Cylinder,
     config: {
@@ -134,7 +134,7 @@ export const shapes: IShape[] = [
   {
     id: "esfera",
     name: "Esfera",
-    description: "Explore as faces, arestas e vértices da esfera",
+    description: "Explore as faces da esfera",
     icon: TbSphere,
     component: Sphere,
     config: {
