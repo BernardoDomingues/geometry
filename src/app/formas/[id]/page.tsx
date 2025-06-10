@@ -96,10 +96,31 @@ export default function FormaPage({
           </Box>
 
           {/* Controls */}
-          <Box w={{ base: "100%", lg: "300px" }}>
-            <VStack gap={6} align="stretch">
-              <Flex alignItems="center">
-                <Text mb="0" mr={2}>
+          <Box
+            w={{ base: "100%", lg: "300px" }}
+            p={4}
+            bg="chakra-subtle-bg"
+            borderRadius="lg"
+            boxShadow="sm"
+          >
+            <VStack gap={4} align="stretch">
+              <Text
+                fontSize="lg"
+                fontWeight="medium"
+                mb={2}
+                color="chakra-body-text"
+              >
+                Controles de Visualização
+              </Text>
+
+              <Flex
+                alignItems="center"
+                justifyContent="space-between"
+                p={2}
+                borderRadius="md"
+                _hover={{ bg: "chakra-subtle-bg" }}
+              >
+                <Text fontSize="md" color="chakra-body-text">
                   Mostrar Faces
                 </Text>
                 <Switch.Root
@@ -114,8 +135,15 @@ export default function FormaPage({
                   <Switch.Label />
                 </Switch.Root>
               </Flex>
-              <Flex alignItems="center">
-                <Text mb="0" mr={2}>
+
+              <Flex
+                alignItems="center"
+                justifyContent="space-between"
+                p={2}
+                borderRadius="md"
+                _hover={{ bg: "chakra-subtle-bg" }}
+              >
+                <Text fontSize="md" color="chakra-body-text">
                   Mostrar Arestas
                 </Text>
                 <Switch.Root
@@ -130,8 +158,15 @@ export default function FormaPage({
                   <Switch.Label />
                 </Switch.Root>
               </Flex>
-              <Flex alignItems="center">
-                <Text mb="0" mr={2}>
+
+              <Flex
+                alignItems="center"
+                justifyContent="space-between"
+                p={2}
+                borderRadius="md"
+                _hover={{ bg: "chakra-subtle-bg" }}
+              >
+                <Text fontSize="md" color="chakra-body-text">
                   Mostrar Vértices
                 </Text>
                 <Switch.Root
