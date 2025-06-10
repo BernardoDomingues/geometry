@@ -11,7 +11,11 @@ import Pyramid from "@/components/shapes/Pyramid";
 import RectangularPrism from "@/components/shapes/RectangularPrism";
 import Sphere from "@/components/shapes/Sphere";
 import Tetrahedron from "@/components/shapes/Tetrahedron";
-import { PiRectangleDashedFill } from "react-icons/pi";
+import {
+  DomDodecahedron,
+  DomIcosahedron,
+  DomRectangularPrism,
+} from "@/components/DomIcons";
 
 export interface IShape {
   id: string;
@@ -71,7 +75,7 @@ export const shapes: IShape[] = [
     id: "dodecaedro",
     name: "Dodecaedro",
     description: "Explore as faces, arestas e vértices do dodecaedro",
-    icon: null,
+    icon: DomDodecahedron,
     component: Dodecahedron,
     config: {
       hasEdges: true,
@@ -83,7 +87,7 @@ export const shapes: IShape[] = [
     id: "icosaedro",
     name: "Icosaedro",
     description: "Explore as faces, arestas e vértices do icosaedro",
-    icon: null,
+    icon: DomIcosahedron,
     component: Icosahedron,
     config: {
       hasEdges: true,
@@ -119,7 +123,7 @@ export const shapes: IShape[] = [
     id: "prisma-retangular",
     name: "Prisma Retangular",
     description: "Explore as faces, arestas e vértices do prisma retangular",
-    icon: PiRectangleDashedFill,
+    icon: DomRectangularPrism,
     component: RectangularPrism,
     config: {
       hasEdges: true,
